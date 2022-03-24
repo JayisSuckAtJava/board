@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html lang="ko">
+
+<head th:replace="common/head">
+</head>
+
+<body>
+
+<div th:replace="common/header">
+</div>
+
+<nav th:replace="common/nav">
+</nav>
+
+	<div class="container mt-5">
+	
+		<div class="row">
+			<form method="post" action="/update">
+				<div class="mb-3">
+					<label for="title">이름:</label> 
+					<input type="text" class="form-control" id="name" name="name" th:value="${user.name}">
+				</div>
+				<div class="mb-3">
+					<label for="content">비밀번호:</label>
+					<input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호" th:value="${user.pwd}">
+				</div>
+				<div class="d-grid gap-2">
+					<button class="btn btn-primary" id="complete">수정완료</button>
+				</div>
+			</form>
+		</div>
+		<hr><br><br><br>
+	
+	
+	
+	
+	
+  <table class="table table-hover">
+  				<span> 	현재까지 작성하신 게시글입니다.</span>
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성자</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="board : ${list}" th:attr="id=${board.id}">
+						<td th:text="${board.id}"></td>
+						<td th:text="${board.title}"></td>
+						<td th:text="${board.user.name}"></td>
+					</tr>
+				</tbody>
+			</table>
+</div>
+
+	<div th:replace="common/footer">
+</div>
+
+</body>
+</html>
